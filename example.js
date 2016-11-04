@@ -151,11 +151,20 @@ test3.then(val=>console.log(val)) //3
     }).fail(function(error){console.log(error)});
 
     //---------------- vue Resource / angular2
-    this.$http.get('/someUrl').then((response) => {
-        // success callback
-      }, (response) => {
-        // error callback
-    });
+
+    this.$http.get('/someUrl')
+        .then((response) => {
+            // success callback
+          }, (response) => {
+            // error callback
+        });
+
+    http.get('people.json')
+        .subscribe((res:Response) =>
+            this.people = res.json())
+        .catch((error:ResponseError)=>
+            alert(error));
+
 
     //---------------- fetch Api
     fetch('/users.json')
